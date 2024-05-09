@@ -1,0 +1,58 @@
+@import "../../styles/mixins";
+
+
+/******** DATA KEYDATA *********/
+.data-keydata {
+    
+
+    &__card {
+        
+        &--picto {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &--data {
+            height: max-content;
+        }
+
+        &--number {
+            font-size: rem(20);
+            font-weight: 700;
+        }
+
+        &--title {
+            font-size: rem(14);
+            color: #74798C;
+            line-height: 120%;margin-top: 10px;
+        }
+    }
+
+    &__caloriecount {
+        .data-keydata__card--picto {
+            background-color: rgba($color: #ff0000, $alpha: 0.06);
+        }
+    }
+    &__proteincount {
+        .data-keydata__card--picto {
+            background-color: rgba($color: #4AB8FF, $alpha: 0.1);
+        }
+    }
+    &__carbohydratecount {
+        .data-keydata__card--picto {
+            background-color: rgba($color: #F9CE23, $alpha: 0.1);
+        }
+    }
+    &__lipidcount {
+        .data-keydata__card--picto {
+            background-color: rgba($color: #FD5181, $alpha: 0.1);
+        }
+    }
+
+
+}

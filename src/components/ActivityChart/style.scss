@@ -1,0 +1,16 @@
+@import "../../styles/mixins";
+
+.data-charts__activity {
+    padding: 30px 10px 20px 30px;
+    font-size: rem(14);
+    position: relative;
+
+    h2 {
+        font-size: rem(16);
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        font-weight: 400;
+        color: #20253A;
+    }
+}

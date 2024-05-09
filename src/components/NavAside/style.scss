@@ -1,0 +1,43 @@
+@import "../../styles/mixins";
+
+.aside {
+    background-color: $black;
+    width: max-content;
+    padding: rem(26);
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &__menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: rem(50);
+
+        &--item a{
+            width: rem(64);
+            height: rem(64);
+            border-radius: 6px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &--item a:hover {
+            background-color: #eee;
+        }
+
+    }
+
+    &__sign {
+        position: absolute;
+        color: #fff;
+        writing-mode: sideways-lr;
+        text-orientation: sideways;
+        font-size: rem(12);
+        bottom: rem(40);
+    }
+}

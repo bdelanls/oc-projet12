@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/main.scss'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
+import NavAside from './components/NavAside'
+import Dashboard from './pages/Dashboard'
+import Erreur404 from './pages/Erreur404'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Header />
+      <div className="content">
+        <NavAside />
+        <Routes>
+          <Route path="/dashboard/:id" element={<Dashboard />} />
+          <Route path='/erreur404' element={<Erreur404 />} />
+          <Route path='*' element={<Erreur404 />} />
+        </Routes>
+      </div>
+    </Router>
+  )
 }
 
-export default App;
+export default App

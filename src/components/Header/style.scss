@@ -1,0 +1,40 @@
+@import "../../styles/mixins";
+
+.header {
+    width: 100%;
+    max-width: 1440px;
+    min-width: 1024px;
+    background-color: $black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: rem(18) rem(28);
+    gap: 10%;
+    box-shadow: 0px 4px 4px rgba($color: #000000, $alpha: 0.25);
+    z-index: 5;
+
+    &__logo {
+        width: rem(178);
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    &__menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        &--item a{
+            font-size: rem(24);
+            color: #fff;
+            text-decoration: none;
+            padding: rem(20);
+        }
+        &--item a:hover {
+            color: $primary;
+        }
+    }
+
+}
