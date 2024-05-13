@@ -35,8 +35,9 @@
     &__sign {
         position: absolute;
         color: #fff;
-        writing-mode: sideways-lr;
-        text-orientation: sideways;
+        writing-mode: vertical-lr;
+        transform: rotate(180deg);
+        transform-origin: center;
         font-size: rem(12);
         bottom: rem(40);
     }

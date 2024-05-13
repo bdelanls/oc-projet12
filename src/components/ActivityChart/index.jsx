@@ -59,8 +59,12 @@ const CustomTooltip = ({ active, payload }) => {
     return null
 }
 
-const formatDate = (tickItem) => {
-    return new Date(tickItem).getDate()
+const formatDate = (date) => {
+    return new Date(date).toLocaleDateString('fr-FR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: '2-digit'
+    })
 }
 
 function ActivityChart({ activityData }) {
@@ -87,7 +91,7 @@ function ActivityChart({ activityData }) {
                     <YAxis yAxisId="left" orientation="right" stroke="#9B9EAC" domain={[weightRange.min, weightRange.max]} axisLine={false} tickLine={false} ticks={ticks} />
                     <YAxis yAxisId="right" orientation="left" stroke="#9B9EAC" hide domain={[calorieRange.min, calorieRange.max]} />
                     <Tooltip content={<CustomTooltip />} />
-                    <Legend content={<CustomLegend />} align="right" verticalAlign="top" wrapperStyle={{ top: 0, right: 0, width: 'auto' }} />
+                    <Legend content={<CustomLegend />} align="right" verticalAlign="top" wrapperStyle={{ top: 0, right: '10px', width: 'auto' }} />
                     <Bar yAxisId="left" dataKey="kilogram" fill="#282D30" barSize={7} radius={[3, 3, 0, 0]} name="Poids (kg)" />
                     <Bar yAxisId="right" dataKey="calories" fill="#E60000" barSize={7} radius={[3, 3, 0, 0]} name="Calories brûlées (kCal)" />
                 </BarChart>

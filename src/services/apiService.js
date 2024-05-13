@@ -31,7 +31,7 @@ const fetchData = async (endpoint, userId) => {
 }
 
 
-export const getUserInfo = (userId) => fetchData('', userId) // Notez l'ajout de l'argument userId
+export const getUserInfo = (userId) => fetchData('', userId) 
 export const getUserActivity = (userId) => fetchData('activity', userId)
-export const getUserAverageSessions = (userId) => fetchData('averageSessions', userId)
+export const getUserAverageSessions = (userId) => fetchData('average-sessions', userId)
 export const getUserPerformance = (userId) => fetchData('performance', userId)

@@ -1,0 +1,61 @@
+@import "../../styles/mixins";
+
+.data-charts__score {
+    font-size: rem(14);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        font-size: rem(16);
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        font-weight: 400;
+        width: 75%;
+
+        @include tablet {
+            top: 20px;
+            left: 20px;
+        }
+    }
+    
+
+    .recharts-responsive-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
+    }
+
+    &--legende {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 65% ;
+        height: 65%;
+        border-radius: 100%;
+        background-color: #fff;
+        z-index: 1;
+
+        h3 {
+            font-size: rem(26);
+            text-align: center;
+            line-height: 150%;
+            color: #282D30;
+        }
+        p {
+            font-size: rem(16);
+            width: 50%;
+            text-align: center;
+            line-height: 150%;
+            color: #74798C;
+        }
+    }
+    
+
+    
+}

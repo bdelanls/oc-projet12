@@ -5,6 +5,10 @@
     font-size: rem(14);
     position: relative;
 
+    @include tablet {
+        padding: 20px 0px 20px 20px;
+    }
+
     h2 {
         font-size: rem(16);
         position: absolute;
@@ -12,5 +16,10 @@
         left: 30px;
         font-weight: 400;
         color: #20253A;
+
+        @include tablet {
+            top: 20px;
+            left: 20px;
+        }
     }
 }
