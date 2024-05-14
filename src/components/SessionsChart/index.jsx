@@ -31,8 +31,15 @@ const CustomCursor = ({ points, width, height }) => {
 }
 
 
-function SessionsChart({ sessionsData }) {
+function SessionsChart({ sessionsData, error }) {
 
+    if (error) {
+        return (
+            <article className="data-charts__card data-charts__sessions">
+                <div className="error-message">{error}</div>
+            </article>
+        )
+    }
 
     const daysOfWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
     const formattedData = sessionsData.map(session => ({

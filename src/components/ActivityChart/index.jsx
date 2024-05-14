@@ -67,10 +67,18 @@ const formatDate = (date) => {
     })
 }
 
-function ActivityChart({ activityData }) {
+function ActivityChart({ activityData, error }) {
 
-    const weightRange = getDataRange(activityData.sessions, 'kilogram', 3, 3)
-    const calorieRange = getDataRange(activityData.sessions, 'calories', 50, 50)
+    if (error) {
+        return (
+            <article className="data-charts__card data-charts__activity">
+                <div className="error-message">{error}</div>
+            </article>
+        )
+    }
+
+    const weightRange = getDataRange(activityData, 'kilogram', 3, 3)
+    const calorieRange = getDataRange(activityData, 'calories', 50, 50)
     const ticks = calculateTicks(weightRange.min, weightRange.max, 3)
 
     return (
@@ -80,7 +88,7 @@ function ActivityChart({ activityData }) {
                 <BarChart
                     width={600}
                     height={200}
-                    data={activityData.sessions}
+                    data={activityData}
                     margin={{
                         top: 50, right: 0, left: 0, bottom: 0
                     }}

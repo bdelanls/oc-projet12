@@ -4,7 +4,23 @@ import './style.scss'
 
 
 
-function PerformanceChart({ performanceData }) {
+function PerformanceChart({ performanceData, error }) {
+
+    if (error) {
+        return (
+            <article className="data-charts__card data-charts__performance">
+                <div className="error-message">{error}</div>
+            </article>
+        )
+    }
+
+    if (!performanceData) {
+        return (
+            <article className="data-charts__card data-charts__performance">
+                <div className="error-message">Les données ne sont pas disponibles.</div>
+            </article>
+        )
+    }
 
     const kindTranslations = {
         'cardio': 'Cardio',

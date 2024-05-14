@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { getUserInfo, getUserActivity, getUserAverageSessions, getUserPerformance } from '../../services/apiService'
 import KeyData from '../../components/KeyData'
 import './style.scss'
@@ -11,11 +11,15 @@ import ScoreChart from '../../components/ScoreChart'
 
 const Dashboard = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
     const [user, setUser] = useState(null)
-    const [activityData, setActivityData] = useState(null)
-    const [sessionsData, setSessionsData] = useState(null)
-    const [performanceData, setPerformanceData] = useState(null)
-    const [listErrors, setListErrors] = useState([])
+    const [activityData, setActivityData] = useState({ sessions: [] })
+    const [sessionsData, setSessionsData] = useState({ sessions: [] })
+    const [performanceData, setPerformanceData] = useState({ sessions: [] })
+    
+    const [sessionError, setSessionError] = useState('')
+    const [performanceError, setPerformanceError] = useState('')
+    const [activityError, setActivityError] = useState('')
 
     useEffect(() => {
         getUserInfo(id)
@@ -24,57 +28,62 @@ const Dashboard = () => {
                     setUser(data.data)
                 } else {
                     console.log('Redirecting because user info is missing or invalid')
-                    setListErrors(prevErrors => [...prevErrors, 'user info is missing or invalid'])
+                    navigate('/Erreur404', { replace: true })
                 }
             })
             .catch((error) => {
                 console.error('Failed to fetch user info:')
-                setListErrors(prevErrors => [...prevErrors, 'Failed to fetch user info'])
+                navigate('/Erreur404', { replace: true })
             })
 
         getUserActivity(id)
             .then(data => {
                 if (data && data.data) {
                     setActivityData(data.data)
+                    setActivityError('')
                 } else {
                     console.error('No activity data found for user ID:')
+                    setActivityError('Aucune donnée d\'activité disponible.')
                 }
             })
             .catch(error => {
                 console.error('Error loading activity data:')
+                setActivityError('Erreur lors du chargement des données d\'activité.')
             })   
             
         getUserAverageSessions(id)
             .then(data => {
                 if (data && data.data) {
                     setSessionsData(data.data)
+                    setSessionError('')
                 } else {
                     console.error('No sessions data found for user ID:')
+                    setSessionError('Aucune donnée de session disponible.')
                 }
             })
             .catch(error => {
                 console.error('Error loading sessions data:')
+                setSessionError('Erreur lors du chargement des données de session.')
             })   
 
         getUserPerformance(id)
             .then(data => {
                 if (data && data.data) {
                     setPerformanceData(data.data)
+                    setPerformanceError('')
                 } else {
                     console.error('No performance data found for user ID:')
+                    setPerformanceError('Aucune donnée de performance disponible.')
                 }
             })
             .catch(error => {
                 console.error('Error loading performance data:')
+                setPerformanceError('Erreur lors du chargement des données de performance.')
             })     
 
-    }, [id])
+    }, [id, navigate])
 
-    console.log('error = ', listErrors)
 
-    if (listErrors.length > 0) {
-        return <div className='error-message'>Errors: {listErrors}</div>
-    }
 
     if (!user) {
         return <div>Chargement...</div>
@@ -97,12 +106,9 @@ const Dashboard = () => {
                 <p className="data-header__text">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </section>
             <section className="data-charts">
-                <ActivityChart activityData={activityData}/>
-                {/* <article className="data-charts__card data-charts__sesions"></article> */}
-                <SessionsChart sessionsData={sessionsData.sessions} />
-                {/* <article className="data-charts__card data-charts__performance"></article> */}
-                <PerformanceChart performanceData={performanceData} />
-                {/* <article className="data-charts__card data-charts__score"></article> */}
+                {activityData && <ActivityChart activityData={activityData.sessions} error={activityError} /> }
+                {sessionsData && <SessionsChart sessionsData={sessionsData.sessions} error={sessionError} /> }
+                {performanceData && <PerformanceChart performanceData={performanceData} error={performanceError} /> }
                 <ScoreChart scoreData={todayScore()} />
             </section>
             {/* KEYDATA */}
