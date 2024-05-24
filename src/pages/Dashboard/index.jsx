@@ -9,19 +9,24 @@ import PerformanceChart from '../../components/PerformanceChart'
 import ScoreChart from '../../components/ScoreChart'
 
 
+/**
+ * Dashboard page component that displays user data and charts related to their physical activities.
+ * Utilizes user ID from URL parameters to fetch and display data.
+ */
 const Dashboard = () => {
     const { id } = useParams()
     const navigate = useNavigate()
     const [user, setUser] = useState(null)
     const [activityData, setActivityData] = useState({ sessions: [] })
     const [sessionsData, setSessionsData] = useState({ sessions: [] })
-    const [performanceData, setPerformanceData] = useState({ sessions: [] })
+    const [performanceData, setPerformanceData] = useState(null)
     
     const [sessionError, setSessionError] = useState('')
     const [performanceError, setPerformanceError] = useState('')
     const [activityError, setActivityError] = useState('')
 
     useEffect(() => {
+        // Fetching user information and handling possible redirection if data is invalid or missing.
         getUserInfo(id)
             .then(data => {
                 if (data && data.data) {
@@ -36,6 +41,8 @@ const Dashboard = () => {
                 navigate('/Erreur404', { replace: true })
             })
 
+        /// Additional fetches for activity, sessions, and performance data
+        // Similar pattern with error handling for each type of data
         getUserActivity(id)
             .then(data => {
                 if (data && data.data) {
@@ -89,6 +96,7 @@ const Dashboard = () => {
         return <div>Chargement...</div>
     }
 
+    // Key data cards prepared for rendering, using data from user state.
     const keyDataCards = [
         { type: 'caloriecount', number: `${user.keyData.calorieCount} kCal`, title: 'Calories', icon: 'energy' },
         { type: 'proteincount', number: `${user.keyData.proteinCount} g`, title: 'Protéines', icon: 'chicken' },
@@ -96,6 +104,7 @@ const Dashboard = () => {
         { type: 'lipidcount', number: `${user.keyData.lipidCount} g`, title: 'Lipides', icon: 'burger' }
     ]
 
+    // The calculated score is used to determine user achievements and feedback.
     const todayScore = () => user.todayScore ? user.todayScore : user.score
 
 
@@ -111,7 +120,6 @@ const Dashboard = () => {
                 {performanceData && <PerformanceChart performanceData={performanceData} error={performanceError} /> }
                 <ScoreChart scoreData={todayScore()} />
             </section>
-            {/* KEYDATA */}
             <section className="data-keydata">
                 {keyDataCards.map(keyDataCard => (
                     <KeyData key={keyDataCard.type} type={keyDataCard.type} number={keyDataCard.number} title={keyDataCard.title} icon={keyDataCard.icon} />

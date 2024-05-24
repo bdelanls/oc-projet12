@@ -1,5 +1,5 @@
 import './styles/main.scss'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Header from './components/Header'
 import NavAside from './components/NavAside'
 import Dashboard from './pages/Dashboard'
@@ -12,6 +12,7 @@ function App() {
       <div className="content">
         <NavAside />
         <Routes>
+          <Route path='/' element={<Navigate replace to='/dashboard/12' />} />
           <Route path="/dashboard/:id" element={<Dashboard />} />
           <Route path='/erreur404' element={<Erreur404 />} />
           <Route path='*' element={<Erreur404 />} />

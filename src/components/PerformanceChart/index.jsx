@@ -2,8 +2,13 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 import './style.scss'
 
 
-
-
+/**
+ * Component for displaying performance data in a radar chart.
+ * @param {Object} props - Component props.
+ * @param {Object} props.performanceData - Performance data for the chart.
+ * @param {string} props.error - Error message if there is an issue with loading data.
+ * @returns {JSX.Element} - Rendered component for performance chart.
+ */
 function PerformanceChart({ performanceData, error }) {
 
     if (error) {
@@ -22,6 +27,7 @@ function PerformanceChart({ performanceData, error }) {
         )
     }
 
+    // Translation mapping for performance kinds
     const kindTranslations = {
         'cardio': 'Cardio',
         'energy': 'Énergie',
@@ -31,13 +37,14 @@ function PerformanceChart({ performanceData, error }) {
         'intensity': 'Intensité'
     }
 
+    // Prepare data for radar chart
     const { kind, data } = performanceData
-
+    
     const chartData = data
         .map(item => ({
-            subject: kindTranslations[kind[item.kind.toString()]], // Accéder à la description de l'activité
+            subject: kindTranslations[kind[item.kind.toString()]], 
             value: item.value,
-            fullMark: 250 // Assurez-vous que cette valeur est adaptée à votre échelle maximale
+            fullMark: 250 
         }))
         .reverse()
 

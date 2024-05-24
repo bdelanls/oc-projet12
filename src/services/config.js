@@ -1,6 +1,6 @@
 // const devMode = process.env.NODE_ENV !== 'production'
 // true en développement, false en production
-const devMode = false
+const devMode = true
 
 
 export const config = {

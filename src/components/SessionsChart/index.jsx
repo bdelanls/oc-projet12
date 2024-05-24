@@ -1,7 +1,13 @@
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer, YAxis, Rectangle } from 'recharts'
 import './style.scss'
 
-// Composant de Tooltip personnalisé
+/**
+ * Custom tooltip component for line chart.
+ * @param {Object} props - Props containing tooltip data.
+ * @param {boolean} active - Flag indicating whether the tooltip is active.
+ * @param {Array} payload - The data payload for the tooltip.
+ * @returns {JSX.Element|null} - A rendered tooltip component or null.
+ */
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
@@ -15,7 +21,14 @@ const CustomTooltip = ({ active, payload }) => {
     return null
 }
 
-// Composant de CustomCursor
+/**
+ * Custom cursor component for line chart.
+ * @param {Object} props - Props for custom cursor.
+ * @param {Array} points - Points on the graph where the cursor intersects.
+ * @param {number} width - Width of the custom cursor area.
+ * @param {number} height - Height of the custom cursor area.
+ * @returns {JSX.Element|null} - A rectangle representing the cursor or null.
+ */
 const CustomCursor = ({ points, width, height }) => {
     if (!points || points.length === 0) return null
     const { x } = points[0]
@@ -30,7 +43,13 @@ const CustomCursor = ({ points, width, height }) => {
     )
 }
 
-
+/**
+ * Component to display average session lengths over a week.
+ * @param {Object} props - Component props.
+ * @param {Array} props.sessionsData - Data for each day's session length.
+ * @param {string} props.error - Error message if data could not be loaded.
+ * @returns {JSX.Element} - Rendered line chart for session durations.
+ */
 function SessionsChart({ sessionsData, error }) {
 
     if (error) {
@@ -41,6 +60,7 @@ function SessionsChart({ sessionsData, error }) {
         )
     }
 
+    // Mapping days of the week to session data
     const daysOfWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
     const formattedData = sessionsData.map(session => ({
         day: daysOfWeek[session.day - 1],

@@ -1,0 +1,20 @@
+@import "../../styles/mixins";
+
+.erreur404 {
+    width: 100%;
+    text-align: center;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    h1 {
+        font-size: rem(150);
+        color: $primary;
+    }
+    h2 {
+        font-size: rem(24);
+        line-height: 150%;
+    }
+}

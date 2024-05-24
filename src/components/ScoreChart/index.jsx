@@ -2,13 +2,20 @@ import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts'
 import './style.scss'
 
 
+/**
+ * Component to display a radial bar chart representing a score as a percentage of a goal.
+ * @param {Object} props - Component props.
+ * @param {number} props.scoreData - The score as a fraction (e.g., 0.7 for 70%).
+ * @returns {JSX.Element} - Rendered component for the score chart.
+ */
 function ScoreChart({ scoreData }) {
-
+    // Prepare the data for the RadialBarChart
     const data = [{
         name: 'score',
-        value: scoreData * 100
+        value: scoreData * 100 // Convert fractional score to percentage
     }]
 
+    // Calculate the end angle based on the score to create a complete circle animation
     const endAngle = 90 + (360 * scoreData)
 
     return (

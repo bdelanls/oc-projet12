@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# Développez un tableau de bord d'analytics avec React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Ce projet, intitulé "Développez un tableau de bord d'analytics avec React", est le projet 12 de la formation "Développeur d'application - Javascript React" dispensée par OpenClassrooms. L'application permet de visualiser diverses métriques de performance sportive et nutritionnelle à travers des graphiques interactifs.
 
-In the project directory, you can run:
+## Fonctionnalités
 
-### `npm start`
+- Visualisation de la durée moyenne des sessions d'activité.
+- Affichage des performances dans diverses catégories sportives.
+- Suivi des objectifs de calories et de nutrition.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Utilisées
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- Recharts (pour les graphiques)
+- SCSS pour le style
+- Responsive design
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Pour installer et exécuter ce projet localement, suivez ces étapes :
 
-### `npm run build`
+**Clonez le dépôt du frontend**
+```git clone https://github.com/bdelanls/oc-projet12```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Accédez au dossier du projet**
+```cd oc-projet12```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Installez les dépendances**
+```npm install```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Démarrez l'application**
+```npm start```
 
-### `npm run eject`
+**Clonez également le dépôt du backend**
+```git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Suivez les instructions de démarrage du backend pour avoir l'environnement complet
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Utilisation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+L'application fonctionne en utilisant un mock de l'API ainsi que les vraies données API. Deux utilisateurs sont disponibles : 12 et 18. Vous pouvez basculer entre le mode développement (mock) et production (API) en modifiant le fichier `config.js`.
 
-## Learn More
+## Licence
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Ce projet est réalisé dans un contexte de formation et n'est pas sous licence.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contact
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Bertrand Delanlssays - [contact@bdelanls.fr](mailto:contact@bdelanls.fr)
+Lien du projet : [GitHub - oc-projet12](https://github.com/bdelanls/oc-projet12)
+Site du projet : [Projet 12 - OpenClassrooms](https://p12.oc.bdelanls.fr/)

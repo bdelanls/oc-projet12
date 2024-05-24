@@ -1,6 +1,14 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import './style.scss'
 
+/**
+ * Calculates the range for a given data set and key.
+ * @param {Array} data - The array of data objects.
+ * @param {string} key - The key in data objects to calculate the range for.
+ * @param {number} valAdd - Value to add to the maximum of the range.
+ * @param {number} valSub - Value to subtract from the minimum of the range.
+ * @returns {Object} - An object containing min and max values.
+ */
 const getDataRange = (data, key, valAdd, valSub) => {
     const values = data.map(item => item[key])
     const minValue = Math.min(...values)
@@ -11,6 +19,13 @@ const getDataRange = (data, key, valAdd, valSub) => {
     }
 }
 
+/**
+ * Calculates evenly distributed ticks between min and max values.
+ * @param {number} min - Minimum value of the range.
+ * @param {number} max - Maximum value of the range.
+ * @param {number} numTicks - Number of ticks to generate.
+ * @returns {Array<number>} - An array of tick values.
+ */
 const calculateTicks = (min, max, numTicks) => {
     const range = max - min
     const interval = range / (numTicks - 1)
@@ -21,9 +36,13 @@ const calculateTicks = (min, max, numTicks) => {
     return ticks
 }
 
+/**
+ * Custom legend component for the BarChart.
+ * @param {Object} props - Props passed to the component.
+ * @returns {JSX.Element} - A rendered legend component.
+ */
 const CustomLegend = (props) => {
     const { payload } = props
-
 
     return (
         <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
@@ -39,6 +58,11 @@ const CustomLegend = (props) => {
     )
 }
 
+/**
+ * Custom tooltip for displaying data values in the BarChart.
+ * @param {Object} props - Props containing tooltip data.
+ * @returns {JSX.Element|null} - A rendered tooltip or null if not active.
+ */
 const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
         return (
@@ -59,6 +83,11 @@ const CustomTooltip = ({ active, payload }) => {
     return null
 }
 
+/**
+ * Formats date strings to French date format.
+ * @param {string} date - The date string to format.
+ * @returns {string} - Formatted date string.
+ */
 const formatDate = (date) => {
     return new Date(date).toLocaleDateString('fr-FR', {
         day: '2-digit',
@@ -67,6 +96,11 @@ const formatDate = (date) => {
     })
 }
 
+/**
+ * Main component for displaying activity data in a bar chart.
+ * @param {Object} props - Props containing activity data and any error messages.
+ * @returns {JSX.Element} - A responsive bar chart or an error message.
+ */
 function ActivityChart({ activityData, error }) {
 
     if (error) {
