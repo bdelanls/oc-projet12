@@ -50,5 +50,7 @@ Ce projet est réalisé dans un contexte de formation et n'est pas sous licence.
 ## Contact
 
 Bertrand Delanlssays - [contact@bdelanls.fr](mailto:contact@bdelanls.fr)
+
 Lien du projet : [GitHub - oc-projet12](https://github.com/bdelanls/oc-projet12)
+
 Site du projet : [Projet 12 - OpenClassrooms](https://p12.oc.bdelanls.fr/)
